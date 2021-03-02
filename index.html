@@ -7,9 +7,8 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <div>
-      <h2 class="fd-title fd-title--h2" id="info">No selected activities</h2>
-    </div>
+    <div id="messageContainer"></div>
+    <div id="container"></div>
     <script src="https://unpkg.com/fsm-shell"></script>
     <script src="helpers.js"></script>
     <script>
@@ -19,7 +18,7 @@
 
       // Display an error message if extension does not run within shell
       if (!ShellSdk.isInsideShell()) {
-        updateUI('Unable to reach shell eventAPI');
+        displayMessage('Unable to reach shell eventAPI');
       } else {
         // Initialise ShellSDK to connect with parent shell library
         const shellSdk = ShellSdk.init(parent, '*');
@@ -45,18 +44,19 @@
             auth
           } = JSON.parse(event);
 
-          // Access_token has a short life stpan and needs to be refreshed before expiring
-          // Each extension need to implement its own strategy to fresh it.
+          // Access_token has a short life span and needs to be refreshed before expiring
+          // Each extension needs to implement its own strategy to refresh it.
           initializeRefreshTokenStrategy(shellSdk, auth);
 
-          // Add a listenner expecting activityID
-          shellSdk.onViewState('activityID', async activityID => {
+          // Add a listener expecting serviceCallId
+          shellSdk.onViewState('serviceCallId', async serviceCallId => {
 
-            updateUI(`Loading ...`);
+            displayMessage(`Loading for service call ${serviceCallId}...`);
 
-            let serviceContract = await getServiceContract(cloudHost, account, company, activityID);
+            let udfValues = await getUDFs(cloudHost, account, company, serviceCallId);
 
-            updateUI(serviceContract ? `${serviceContract.contractType}` : `NO CONTRACT`);
+            displayMessage('');
+            displayUDFs(udfValues);
           });
         });
       }
