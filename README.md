@@ -1,56 +1,34 @@
-# SAP Field Service Management - Extension samples
+# Service contract extension sample
 
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/fsm-extension-sample)](https://api.reuse.software/info/github.com/SAP-samples/fsm-extension-sample)
+Service contract extension is a minimalist sample of a front-end extension fetching the data API using the authentication mechanism. 
+It is designed to run within the [dispatching board](https://help.sap.com/viewer/fsm_extensions/Cloud/en-US/dispatching-board.html).
 
-This repo contains the samples that demonstrate the API usage patterns for extensions within the [SAP FSM (Field Service Management)](https://www.sap.com/products/field-service-management.html) application. These code samples were created to help developpers start buidling extensions, and are designed to run on any platforms.
+## How to run
 
-> Note: If you are unfamiliar with the SAP FSM API, or the extensibility program, details can be found within the [SAP Field Service Management Help Portal](https://help.sap.com/viewer/product/SAP_FIELD_SERVICE_MANAGEMENT/Cloud/en-US).
+Front-end extension only require a static storage with a web server to be running.
 
-## SAP FSM Extension development
+### Run locally
 
-These samples require access to the SAP FSM application to run.  
-All details regarding how to get such access are available within our [Help Portal](https://help.sap.com/viewer/product/SAP_FIELD_SERVICE_MANAGEMENT/Cloud/en-US).
+You can run a local web server using the [http-server](https://www.npmjs.com/package/http-server) node package
+```
+npm install --global http-server
+http-server [path] [options]
+```
 
-## Using the samples
+An alternative solution might already been available on your machine using python3
+```
+python3 -m http.server 8080
+```
 
-The easiest way to use these samples without using Git is to download the zip file containing the current version (using the following link or by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the samples locally on your machine.
+#### Publicly accessible
 
-[Download the samples ZIP](../../archive/master.zip)
+For testing purpose, an external solution like [ngrok](https://ngrok.com/) or [localtunnel](https://github.com/localtunnel/localtunnel) can provide a publicly accessible url that will proxy all requests to your locally running webserver.
 
-Each sample provide a README file with instruction regarding how to setup and run locally. It might also include recommanded deployment strategy based on technical specificity. For testing purpose, an external solution like [ngrok](https://ngrok.com/) or [localtunnel](https://github.com/localtunnel/localtunnel) can provide a publicly accessible url that will proxy all requests to your locally running webserver.
+### Github Pages
 
-## Contributions
-
-These samples are direct from the feature teams and we welcome your input on issues and suggestions for new samples. At this time we are not accepting new samples from the public, but check back here as we evolve our contribution model.
-
-## Samples by architecture
-
-### Front-end
-
-<table>
- <tr>
-  <td><a href="samples/service-contract/">Service contract</a></td>
- </tr>
-</table>
-
-### Front-end and Backend
-
-<table>
- <tr>
-  <td><a href="samples/login-with-token/">Login with token</a></td>
- </tr>
-</table>
-
-### Front-end and Backend using SSO
-
-<table>
- <tr>
-  <td><a href="samples/login-with-sso/">Login with SSO</a></td>
- </tr>
-</table>
+Github offers static hosting as part of the [Github pages](https://pages.github.com/) functionnality. Each github repository can host static files and then be used with some limits to host your front-end application.
 
 ## How to obtain support
-
 In case you find a bug or need support, please open an issue [here](https://github.com/SAP-samples/fsm-extension-sample/issues/new).
 
 ## License
