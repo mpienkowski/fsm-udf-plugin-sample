@@ -70,7 +70,7 @@ async function getUDFs(cloudHost, account, company, serviceCallId) {
 async function getUdfNameValuePairs(cloudHost, account, company, udfValue) {
     const udfMeta = await fetchDataObjectById('UdfMeta', '19', cloudHost, account, company, udfValue.meta);
     return {
-        name: udfMeta.description,
+        name: udfMeta.description || udfMeta.name,
         value: udfValue.value,
     };
 }
