@@ -63,7 +63,9 @@ async function getUDFs(cloudHost, account, company, serviceCallId) {
     const serviceCall = await fetchDataObjectById('ServiceCall', '26', cloudHost, account, company, serviceCallId);
 
     return Promise.all(
-        serviceCall.udfValues.map(udfValue => getUdfNameValuePairs(cloudHost, account, company, udfValue))
+        serviceCall.udfValues
+            ? serviceCall.udfValues.map(udfValue => getUdfNameValuePairs(cloudHost, account, company, udfValue))
+            : []
     );
 }
 
