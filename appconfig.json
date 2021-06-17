@@ -4,5 +4,5 @@
   "description": "Sample extension to demo data fetch using a frontend only architecture",   
   "version": "1.0.0", 
   "icon": "https://mpienkowski.github.io/fsm-udf-plugin-sample/icon.png",
-  "optimalHeight": "130"
+  "optimalHeight": "130px"
 }
