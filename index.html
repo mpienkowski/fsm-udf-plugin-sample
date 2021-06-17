@@ -55,8 +55,12 @@
 
             let udfValues = await getUDFs(cloudHost, account, company, serviceCallId);
 
-            displayMessage('');
-            displayUDFs(udfValues);
+            if (udfValues.length > 0) {
+              displayMessage('');
+              displayUDFs(udfValues);
+            } else {
+              displayMessage('No udf values');
+            }
           });
         });
       }
